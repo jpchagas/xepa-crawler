@@ -1,4 +1,4 @@
-class GlobalPrice:
+class TestGlobal:
 
     def test_insert_prices(self):
         assert True
