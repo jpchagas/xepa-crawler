@@ -1,19 +1,27 @@
 import scrapy
 from ..items import XepacrawlerItem
 from scrapy.loader import ItemLoader
+from ..utils.url_helper import UrlHelper
 import json
 
 
 class CeasarsSpider(scrapy.Spider):
     name = 'ceasars'
-
     # allowed_domains = ['http://ceasa.rs.gov.br/']
     # start_urls = ['http://ceasa.rs.gov.br/tabcotacao/02-03-2021/']
 
     def start_requests(self):
+
+        u = UrlHelper()
+        #urls = u.range_urls("04/06/2021", "03/07/2021")
+        urls = u.current_url()
+        '''
+
         urls = [
-            'http://ceasa.rs.gov.br/tabcotacao/02-03-2021/'
+            'http://ceasa.rs.gov.br/tabcotacao/03-06-2021/'
         ]
+        '''
+
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
 

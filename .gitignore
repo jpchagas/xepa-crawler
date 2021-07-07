@@ -131,3 +131,6 @@ dmypy.json
 
 #idea files
 .idea/
+
+#json file
+*.json

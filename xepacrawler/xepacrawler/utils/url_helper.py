@@ -8,20 +8,24 @@ class UrlHelper:
 
     def current_url(self):
         urls = []
-        prefix = r'http://ceasa.rs.gov.br/tabcotacao/' + self.dh.get_current_date() + '/'
-        urls.append(prefix)
+        prefix = r'http://ceasa.rs.gov.br/tabcotacao/'
+        data = self.dh.get_current_date()
+        url = prefix + data.strftime('%d-%m-%Y') + '/'
+        url1 = prefix + 'cotacao-' + data.strftime('%d-%m-%Y') + '/'
+        urls.append(url)
+        urls.append(url1)
         return urls
 
     def range_urls(self, begin, end):
+
         urls = []
         prefix = r'http://ceasa.rs.gov.br/tabcotacao/'
-        for data in get_dates():
-            if data > date(2020, 1, 8):
-                url = prefix + data.strftime('%d-%m-%Y') + '/'
-            elif data == date(2020, 1, 8):
-                url = prefix + '2339' + '/'
-            else:
-                url = prefix + 'cotacao-' + data.strftime('%d-%m-%Y') + '/'
+        for data in self.dh.get_dates_range(begin, end):
+            url = prefix + data.strftime('%d-%m-%Y') + '/'
+            url1 = prefix + 'cotacao-' + data.strftime('%d-%m-%Y') + '/'
             urls.append(url)
+            urls.append(url1)
 
         return urls
+
+        #self.dh.get_dates_range(begin, end)

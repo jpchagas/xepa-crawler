@@ -5,12 +5,12 @@ class DateHelper:
         pass
 
     def get_current_date(self):
-        return date.today()
+        return date.today() - timedelta(days=1)
 
     def get_dates_range(self, begin, end):
         date_rage = []
-        bstring = datetime.strptime(begin, '%d/%m/%y %H:%M:%S')
-        estring = datetime.strptime(end, '%d/%m/%y %H:%M:%S')
+        bstring = datetime.strptime(begin, '%d/%m/%Y')
+        estring = datetime.strptime(end, '%d/%m/%Y')
         sdate = date(bstring.year, bstring.month, bstring.day)  # start date
         edate = date(estring.year, estring.month, estring.day)  # end date
 

@@ -1,0 +1,6 @@
+Scrapy
+Flask
+apscheduler
+requests
+pytest
+gunicorn
